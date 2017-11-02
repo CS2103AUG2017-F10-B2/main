@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.model.person.ReadOnlyPerson;
@@ -92,11 +93,13 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void addScheduleToPerson(Integer index, TreeSet<Integer> schedule) throws PersonNotFoundException {
         addressBook.addScheduleToPerson(index, schedule);
+        indicateAddressBookChanged();
     }
 
     @Override
     public void clearScheduleForPerson(Integer index, TreeSet<Integer> schedule) throws PersonNotFoundException {
         addressBook.clearScheduleForPerson(index, schedule);
+        indicateAddressBookChanged();
     }
     //@@author derickjw
     @Override
@@ -151,4 +154,11 @@ public class ModelManager extends ComponentManager implements Model {
             indicateAddressBookChanged();
         }
     }
+    //@@author hj2304
+
+    @Override
+    public TreeSet<Integer> generateMeetingTime(Index[] ListOfIndex){
+        return addressBook.generateMeetingTime(ListOfIndex);
+    }
+
 }
