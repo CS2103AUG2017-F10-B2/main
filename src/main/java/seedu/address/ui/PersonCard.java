@@ -48,7 +48,7 @@ public class PersonCard extends UiPart<Region> {
     //@@author hj2304
     @FXML
     private Label mrt;
-    //@@author hj2304
+    //@@author
     @FXML
     private FlowPane tags;
 
